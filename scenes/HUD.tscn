@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://cfl84b6ma6emi"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_score"]
+font_size = 20
+font_color = Color(0.521569, 0.309804, 0.0431373, 1)
+outline_size = 4
+outline_color = Color(1, 1, 1, 0.9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_level"]
+font_size = 20
+font_color = Color(0.0588235, 0.431373, 0.337255, 1)
+outline_size = 4
+outline_color = Color(1, 1, 1, 0.9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lives"]
+font_size = 20
+font_color = Color(0.639216, 0.176471, 0.176471, 1)
+outline_size = 4
+outline_color = Color(1, 1, 1, 0.9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_toast"]
+font_size = 22
+font_color = Color(0.639216, 0.176471, 0.176471, 1)
+outline_size = 4
+outline_color = Color(1, 1, 1, 0.9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 36
+font_color = Color(0.443137, 0.168627, 0.0745098, 1)
+outline_size = 6
+outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_body"]
+font_size = 20
+font_color = Color(0.266667, 0.266667, 0.254902, 1)
+
+[node name="HUD" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_hud")
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 500.0
+offset_bottom = 44.0
+theme_override_constants/separation = 28
+
+[node name="ScoreLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "分数 0   最高 0"
+label_settings = SubResource("LabelSettings_score")
+
+[node name="LevelLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "高度 0"
+label_settings = SubResource("LabelSettings_level")
+
+[node name="LivesLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "生命 ♥♥♥"
+label_settings = SubResource("LabelSettings_lives")
+
+[node name="Toast" type="Label" parent="."]
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 180.0
+offset_right = 180.0
+offset_bottom = 210.0
+grow_horizontal = 2
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_toast")
+
+[node name="StartPanel" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="StartPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.72)
+
+[node name="Box" type="VBoxContainer" parent="StartPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="StartPanel/Box"]
+layout_mode = 2
+text = "🦊 小狐狸过马路"
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_title")
+
+[node name="Body" type="Label" parent="StartPanel/Box"]
+layout_mode = 2
+text = "方向键 / WASD 移动，自由奔跑穿过无尽车流
+吃到金币加分，走得越高分越多
+
+按 空格 或 任意方向键 开始"
+horizontal_alignment = 1
+autowrap_mode = 3
+label_settings = SubResource("LabelSettings_body")
+
+[node name="OverPanel" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="OverPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.72)
+
+[node name="Box" type="VBoxContainer" parent="OverPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="OverPanel/Box"]
+layout_mode = 2
+text = "游戏结束"
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_title")
+
+[node name="Body" type="Label" parent="OverPanel/Box"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+label_settings = SubResource("LabelSettings_body")
+
+[node name="PausePanel" type="Control" parent="."]
+process_mode = 3
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="PausePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.72)
+
+[node name="Box" type="VBoxContainer" parent="PausePanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="PausePanel/Box"]
+layout_mode = 2
+text = "已暂停"
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_title")
+
+[node name="Body" type="Label" parent="PausePanel/Box"]
+layout_mode = 2
+text = "按 空格 继续 · 按 Esc 再次暂停"
+horizontal_alignment = 1
+autowrap_mode = 3
+label_settings = SubResource("LabelSettings_body")

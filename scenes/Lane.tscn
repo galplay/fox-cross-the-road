@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://iuxc5tcihqdk"]
+
+[ext_resource type="Script" path="res://scripts/lane.gd" id="1_lane"]
+[ext_resource type="Script" path="res://scripts/lane_debug_draw.gd" id="2_dbg"]
+[ext_resource type="PackedScene" uid="uid://pf4pd3uueaea" path="res://scenes/Car.tscn" id="3_car"]
+
+[node name="Lane" type="Node2D"]
+z_index = 2
+script = ExtResource("1_lane")
+car_scene = ExtResource("3_car")
+
+[node name="DebugDraw" type="Node2D" parent="."]
+script = ExtResource("2_dbg")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b3426gohft8xo"]
+
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_coin"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_coin"]
+radius = 16.0
+
+[node name="Coin" type="Area2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_coin")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_coin")

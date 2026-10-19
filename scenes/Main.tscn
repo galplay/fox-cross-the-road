@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfoxmainscene0001"]
+
+[ext_resource type="Script" uid="uid://b4r312siqet1k" path="res://scripts/game_manager.gd" id="1_gm"]
+[ext_resource type="Script" uid="uid://djdrb108gv78e" path="res://scripts/world.gd" id="2_world"]
+[ext_resource type="PackedScene" uid="uid://w61e5n3c8hg" path="res://scenes/Player.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://cfl84b6ma6emi" path="res://scenes/HUD.tscn" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://iuxc5tcihqdk" path="res://scenes/Lane.tscn" id="5_lane"]
+[ext_resource type="PackedScene" uid="uid://b3426gohft8xo" path="res://scenes/Coin.tscn" id="6_coin"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_gm")
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("2_world")
+lane_scene = ExtResource("5_lane")
+coin_scene = ExtResource("6_coin")
+
+[node name="Player" parent="World" instance=ExtResource("3_player")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(416, 32)
+
+[node name="HUD" parent="." instance=ExtResource("4_hud")]
